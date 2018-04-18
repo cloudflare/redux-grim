@@ -2,17 +2,30 @@
 
 ## What is it?
 
-GRIM is small library which simplifies asynchronous Redux action creators for
-dealing with restful data, and corresponding reducers. It's intended to
+GRIM is small library which simplifies making asynchronous Redux action creators f
+or dealing with restful data, and corresponding reducers. It's intended to
 eliminate the boilerplate that comes with writing such sets of actions and 
 reducers.
 
+Creating asynchronous actions to fetch a remote resource can be accomplished, in
+many cases, with a single line of code. Creating reducers to process the action
+can be equally straightforward.
+
+```javascript
+// Action to fetch 'item'
+export fetchItem = makeActionCreator('item', 'get', '/items/(itemId)');
+
+// Reducer for 'item' 
+export itemReducer = makeReducer('item');
+```
+## Background 
+
 We had a lot Redux code at Cloudflare, the bulk of which of which was nearly
-identical. Very little of it was hand written - most of it was generated from a
-simple block of json and the resultant actions and reducers etc. were written 
-out. (This was GRiM's predecessor GRoD - Generated Redux on Disk). The theory 
-initially was that people might want to manually edit the generated code, but 
-this never came to passed, and there were a few disadvantages:
+identical. Initially it was all hand written. Then we built a generator which
+would translate a block of JSON into series of files for the various actions
+and reducers. (This was GRiM's predecessor GRoD - Generated Redux on Disk). The 
+theory initially was that people might want to manually edit the generated code, 
+but this never came to passed, and there were a few disadvantages:
 * any changes to the generator would result in a vast number of files being
 changed
 * having to manually run the process to generate the code was awkward.
