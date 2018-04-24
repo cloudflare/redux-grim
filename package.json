@@ -1,5 +1,5 @@
 {
-  "name": "grim",
+  "name": "redux-grim",
   "version": "1.0.0",
   "description": "Generator for asynchronous Redux endpoint actions and reducers",
   "keywords": "Redux, asynchronous, library",
