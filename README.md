@@ -1,25 +1,57 @@
-# GRiM (Generated Redux in Memory)
+# GRiM (Generate Redux in Memory)
 
-## What is it?
+## Table of contents
 
-GRIM is small library to reduce the boiler plate involved in making Redux 
-action creators to retrieve remote restful data, and corresponding reducers. 
+* [What is GRiM?](#what-is-grim)
+* [Background](#background)
+* [Action Lifecyle](#action-lifecyle)
+  + [About Action Types](#about-action-types)  
+* [Usage](#usage)
+  + [makeActionCreator](#makeactioncreator)
+    * [templateUrls, methods, and action creator parameters](#templateUrls-methods-and-action-creator-parameters)
+    * [Further Action Configuration](#further-action-configuration)
+      + [apiFetch](#apifetch)
+      + [on(phase, (action, ...)) => action)](#onphase-action---action)
+  + [makeReducer](makereducer)
+    * [Further Reducer Configuration](#further-reducer-configuration)
+      + [modifyInitialState(state => state)](#modifyinitialstatestate--state)
+      + [on(phase, (state, ...)) => state)](#onphase-state---state)
+* [Dependencies](#dependencies)
+  + [Seamless-immutable](#seamless-immutable)
+  + [Redux-thunk](#redux-thunk)
+* [Normalization](#normalization)
+  + [Why Normalize](#why-normalize)
+  + [Rules](#rules)
+    * [Aliases](#aliases)
+    * [Normalizing Child Properties](#normalizing-child-properties)
+    * [Normalizing by properties other than the id](#normalizing-by-properties-other-than-the-id)
+  + [Functions](#functions)
+    * [getNormalizerMiddleware(rules, callback)](#getnormalizermiddlewarerules-callback)
+    * [normalizationReducer(state, action)](#normalizationreducerstate-action)
+    * [createSelector(rules, entitiesSelector, entityType, selector)](#createselectorrules-entitiesselector-entitytype-selector)
+   
+## What is GRiM?
 
-Both can be created with a single line of code.
+GRiM is small library to reduce the boiler plate involved in making Redux 
+action creators, and reducers. It's specifically intended for actions
+which retrieve remote restful data, and provides normalization support.
+
+Action creators and reducers can be created with a single line of code. E.g.
+
 ```javascript
 export fetchItem = makeActionCreator('item', 'get', '/parent/(parentId)/item/(itemId)'); 
 export itemReducer = makeReducer('item');
-
 ```
 
 ## Background
 
 We had a lot Redux code at Cloudflare, the bulk of which of which was nearly
-identical. Very little of it was hand written - most of it was generated from a
+identical. Very little of it was hand written - most was generated from a
 simple block of json and the resultant actions and reducers etc. were written 
-out. (This was GRiM's predecessor Grod - Generated Redux on Disk). The theory 
+out. (This was GRiM's predecessor Grod - Generate Redux on Disk). The theory 
 initially was that people might want to manually edit the generated code, but 
 this never came to passed, and there were a few disadvantages:
+
 * any changes to the generator would result in a vast number of files being
 changed
 * having to manually run the process to generate the code was awkward.
@@ -28,6 +60,7 @@ It was a perfectly workable solution, one that saved a lot of time,
 but that that no-one was entirely happy with.
 
 Here's a truncated example of the sort of code that would be generated:
+
 ```javascript
 // CRUD actions for 'item'
 
@@ -76,12 +109,8 @@ export function createItem(parentId, item, callback, options) {
 }
 
 //
-//
-//
 // For the sake of brevity, the nearly identical methods for GET, PUT, PATCH 
-// and DELETE haved been elided.
-//
-//
+// and DELETE haved been omitted.
 //
 ```
 
@@ -210,19 +239,19 @@ export itemReducer = makeReducer('item');
 ```
 
 It's important to note that although the boilerplate has been abstracted away,
-the GRiM's action creators still produce normal Redux actions, in Flux
-Standard Action format.
+GRiM's action creators still produce normal Redux actions, in Flux Standard Action 
+format.
 
 ## Action lifecycle
 
-As you can see from the origin generated code above, executing one of  GRiM's 
+As you can see from the original generated code above, executing one of  GRiM's 
 action creators begins a sequence of events that will produce two of three 
 possible actions.
 
-* A start event 
+* A start action is dispatched
 * An http request is made for a remote resource
-* If the request succeeds a success event is generated
-* if the request fails, an error event is generated
+* If the request succeeds a success event is dispatched
+* if the request fails, an error event is dispatched
 
 ```javascript
 const getThing = makeActionCreator('thing', 'get', '/thing');
@@ -241,9 +270,7 @@ const action = getThing();
 // Start action if request to /thing succeeds
 {
   type: 'thing.success',
-  payload: [
-    // Array of things 
-  ]
+  payload: {}, // Api response
   meta: {
     entityType: 'thing',
     method: 'get' 
@@ -253,9 +280,7 @@ const action = getThing();
 // Error action if request to /thing errors
 {
   type: 'thing.error',
-  payload: [
-    // Error response 
-  ],
+  payload: {}, // Api Error response 
   error: true,
   meta: {
     entityType: 'thing',
