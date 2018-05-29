@@ -1,5 +1,5 @@
 {
-  "name": "redux-grim",
+  "name": "@cloudflare/redux-grim",
   "version": "1.1.0",
   "description": "Generator for asynchronous Redux endpoint actions and reducers",
   "keywords": [
