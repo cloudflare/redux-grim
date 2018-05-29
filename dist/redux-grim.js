@@ -1763,6 +1763,7 @@ exports.resetAction = resetAction;
 exports.createSelector = createSelector;
 exports.normalizationReducer = normalizationReducer;
 exports.getNormalizerMiddleware = getNormalizerMiddleware;
+exports.processRules = processRules;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

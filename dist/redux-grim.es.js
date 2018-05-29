@@ -1750,5 +1750,5 @@ function getNormalizerMiddleware(arrayRules, callback) {
   };
 }
 
-export { makeActionCreator, makeReducer, setAction, resetAction, createSelector, normalizationReducer, getNormalizerMiddleware };
+export { makeActionCreator, makeReducer, setAction, resetAction, createSelector, normalizationReducer, getNormalizerMiddleware, processRules };
 //# sourceMappingURL=redux-grim.es.js.map
