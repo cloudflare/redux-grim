@@ -315,6 +315,7 @@ function makeActionCreator(entityType, method, templateUrl) {
   var namedParams = getNamedParameters(method, templateUrl);
   options.debug && logActionCreation(entityType, method, templateUrl, namedParams);
 
+  var mock = void 0;
   var hooks = _extends({}, defaultHooks);
   var functions = _extends({}, defaultFunctions);
   var getApiData = makeGetApiData(templateUrl, namedParams);
@@ -326,7 +327,7 @@ function makeActionCreator(entityType, method, templateUrl) {
 
     return function () {
       var _ref = asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch) {
-        var _getApiData, url, params, restArgs, startAction, response, successAction, result, errorAction;
+        var _getApiData, url, params, restArgs, startAction, mockValue, response, successAction, result, errorAction;
 
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
@@ -350,33 +351,53 @@ function makeActionCreator(entityType, method, templateUrl) {
                 dispatch(startAction);
 
                 _context.prev = 6;
-                _context.next = 9;
+                mockValue = void 0, response = void 0;
+
+                if (mock !== undefined) {
+                  mockValue = typeof mock === 'function' ? mock.apply(undefined, args) : mock;
+                  response = mockValue === undefined ? undefined : { body: mockValue };
+                  response && console.info('Mocking ' + method + ' ' + templateUrl, mockValue);
+                }
+                _context.t0 = response;
+
+                if (_context.t0) {
+                  _context.next = 14;
+                  break;
+                }
+
+                _context.next = 13;
                 return functions.apiFetch.apply(functions, [method, url, params.body].concat(toConsumableArray(restArgs)));
 
-              case 9:
-                response = _context.sent;
+              case 13:
+                _context.t0 = _context.sent;
+
+              case 14:
+                response = _context.t0;
                 successAction = {
                   type: entityType + '.success',
-                  payload: response,
+                  payload: response && response.body,
                   meta: {
                     entityType: entityType,
                     method: method
                   }
                 };
 
+
                 successAction = hooks.success(successAction, params, restArgs, options, response);
+
                 successAction = hooks.all(successAction, params, restArgs, options, response);
+
                 result = successAction.payload;
 
                 dispatch(successAction);
                 return _context.abrupt('return', result);
 
-              case 18:
-                _context.prev = 18;
-                _context.t0 = _context['catch'](6);
+              case 23:
+                _context.prev = 23;
+                _context.t1 = _context['catch'](6);
                 errorAction = {
                   type: entityType + '.error',
-                  payload: _context.t0,
+                  payload: _context.t1,
                   error: true,
                   meta: {
                     entityType: entityType,
@@ -384,17 +405,17 @@ function makeActionCreator(entityType, method, templateUrl) {
                   }
                 };
 
-                errorAction = hooks.error(errorAction, params, restArgs, options, _context.t0);
-                errorAction = hooks.all(errorAction, params, restArgs, options, _context.t0);
+                errorAction = hooks.error(errorAction, params, restArgs, options, _context.t1);
+                errorAction = hooks.all(errorAction, params, restArgs, options, _context.t1);
                 dispatch(errorAction);
-                throw _context.t0;
+                throw _context.t1;
 
-              case 25:
+              case 30:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, _this, [[6, 18]]);
+        }, _callee, _this, [[6, 23]]);
       }));
 
       return function (_x2) {
@@ -407,6 +428,12 @@ function makeActionCreator(entityType, method, templateUrl) {
   addHooks(action, hooks);
   action.apiFetch = function (fn) {
     return functions.apiFetch = fn, action;
+  };
+  action.mock = function (fn) {
+    return mock = fn, action;
+  };
+  action.unmock = function () {
+    return mock = undefined, action;
   };
   return action;
 }
