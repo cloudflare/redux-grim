@@ -154,6 +154,7 @@ export default function makeActionCreator(
   options.debug &&
     logActionCreation(entityType, method, templateUrl, namedParams);
 
+  let mock;
   const hooks = { ...defaultHooks };
   const functions = { ...defaultFunctions };
   const getApiData = makeGetApiData(templateUrl, namedParams);
@@ -182,20 +183,25 @@ export default function makeActionCreator(
     dispatch(startAction);
 
     try {
-      const response = await functions.apiFetch(
-        method,
-        url,
-        params.body,
-        ...restArgs
-      );
+      let mockValue, response;
+      if (mock !== undefined) {
+        mockValue = typeof mock === 'function' ? mock(...args) : mock;
+        response = mockValue === undefined ? undefined : { body: mockValue };
+        response && console.info(`Mocking ${method} ${templateUrl}`, mockValue);
+      }
+      response =
+        response ||
+        (await functions.apiFetch(method, url, params.body, ...restArgs));
+
       let successAction = {
         type: `${entityType}.success`,
-        payload: response,
+        payload: response && response.body,
         meta: {
           entityType,
           method
         }
       };
+
       successAction = hooks.success(
         successAction,
         params,
@@ -203,6 +209,7 @@ export default function makeActionCreator(
         options,
         response
       );
+
       successAction = hooks.all(
         successAction,
         params,
@@ -210,6 +217,7 @@ export default function makeActionCreator(
         options,
         response
       );
+
       const result = successAction.payload;
       dispatch(successAction);
       return result;
@@ -233,6 +241,8 @@ export default function makeActionCreator(
   // All these functions return the action so they can be chained.
   addHooks(action, hooks);
   action.apiFetch = fn => ((functions.apiFetch = fn), action);
+  action.mock = fn => ((mock = fn), action);
+  action.unmock = () => ((mock = undefined), action);
   return action;
 }
 
@@ -276,16 +286,16 @@ export function validateActionParameters(
     if (hasBody && ii === namedParams.length - 1) {
       if (type !== 'object') {
         console.warn(
-          `${entityType}, ${method}, ${url}: Expected parameter ${param} to be an object. Actual value: ${
-            args[ii]
-          } ${type}`
+          `${entityType}, ${method}, ${url}: Expected parameter ${
+            param
+          } to be an object. Actual value: ${args[ii]} ${type}`
         );
       }
     } else if (type !== 'string' && type !== 'number') {
       console.warn(
-        `${entityType}, ${method}, ${url}: Expected parameter ${param} to be a string or number. Actual value: ${
-          args[ii]
-        }`
+        `${entityType}, ${method}, ${url}: Expected parameter ${
+          param
+        } to be a string or number. Actual value: ${args[ii]}`
       );
     }
   });

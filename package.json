@@ -7,6 +7,10 @@
     "asynchronous",
     "library"
   ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
+  },
   "main": "dist/redux-grim",
   "module": "dist/redux-grim.es",
   "js:next": "dist/redux-grim.es",

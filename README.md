@@ -460,6 +460,37 @@ Multiple functions can be added for each phase. They will be executed in the
 order that they were added, and the action that's passed as the first parameter
 to each is the result of the preceding call.
 
+#### mock(function | value => payload)
+
+The `mock` function allows the endpoint request to be bypassed and a predefined
+response to be returned instead.
+
+If a function passed to `mock`, when the action is dispatched the function is
+executed with the same parameters as the action, and the return value is used as
+the success action payload.
+
+If the function returns `undefined`, the endpoint request will be made, so that
+mocking can be performed selectively, depending on the action parameters.
+
+If the function throws an exception, the value thrown is used as the payload of
+the error action.
+
+If an object or value is passed to `mock`, it will be used as the success action
+payload whenever the action is dispatched.
+
+```javascript
+const action = makeAction('item', 'post', '/endpoint/(id)')
+  .mock((id, value) => ({ id, value });
+
+action('abcd', 'elephants');
+
+// The action payload is { id: 'abcd', value: 'elephants' }
+```
+
+#### unmock()
+
+This will clear the function passed to `mock`.
+
 ### makeReducer
 
 `makeReducer(entityType, options)` is used to generate a reducer which process

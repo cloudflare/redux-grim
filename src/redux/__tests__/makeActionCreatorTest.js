@@ -11,7 +11,7 @@ describe('makeActionCreator', () => {
     test('should dispatch a start action', () => {
       const dispatch = testContext.dispatch;
       const get = makeActionCreator('item', 'get', '/get').apiFetch(() =>
-        Promise.resolve('test')
+        Promise.resolve()
       );
       get()(dispatch);
       const args = dispatch.mock.calls[0];
@@ -28,7 +28,7 @@ describe('makeActionCreator', () => {
     test('should dispatch a success action', async () => {
       const dispatch = testContext.dispatch;
       const get = makeActionCreator('item', 'get', '/get').apiFetch(() =>
-        Promise.resolve('test')
+        Promise.resolve({ body: 'test' })
       );
 
       await get()(dispatch);
@@ -135,6 +135,102 @@ describe('makeActionCreator', () => {
       expect(args[1]).toBe('/url/a/parameters/b');
       expect(args[2]).toEqual({ id: 'b' });
       expect(args[3]).toBeUndefined();
+    });
+  });
+
+  describe('mocks', () => {
+    test('mocking an action', async () => {
+      const dispatch = testContext.dispatch;
+      const spy = jest.fn();
+      const get = makeActionCreator('item', 'get', '/get')
+        .apiFetch(spy)
+        .mock((a, b, c) => ({ a, b, c }));
+
+      await get(1, 2, 3)(dispatch);
+
+      const args = dispatch.mock.calls[1];
+      expect(args[0]).toEqual({
+        type: 'item.success',
+        payload: { a: 1, b: 2, c: 3 },
+        meta: {
+          entityType: 'item',
+          method: 'get'
+        }
+      });
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    test('mocking an error', async () => {
+      const dispatch = testContext.dispatch;
+      const spy = jest.fn();
+      const get = makeActionCreator('item', 'get', '/get')
+        .apiFetch(spy)
+        .mock(() => {
+          throw 'mock error';
+        });
+
+      let error;
+      try {
+        await get()(dispatch);
+      } catch (err) {
+        error = err;
+      }
+
+      const args = dispatch.mock.calls[1];
+      expect(error).toBe('mock error');
+      expect(args[0]).toEqual({
+        type: 'item.error',
+        payload: 'mock error',
+        error: true,
+        meta: {
+          entityType: 'item',
+          method: 'get'
+        }
+      });
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    test('unmocking an action', async () => {
+      const dispatch = testContext.dispatch;
+      const spy = jest.fn();
+      const get = makeActionCreator('item', 'get', '/get')
+        .apiFetch(spy)
+        .mock((a, b, c) => ({ a, b, c }))
+        .unmock();
+
+      await get(1, 2, 3)(dispatch);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    test('selectively ignore mocking', async () => {
+      const dispatch = testContext.dispatch;
+      const spy = jest.fn();
+
+      // If a mock function returns undefined, the endpoint request should be made.
+      const get = makeActionCreator('item', 'get', '/get')
+        .apiFetch(spy)
+        .mock(() => undefined);
+
+      await get()(dispatch);
+      expect(spy).toHaveBeenCalled();
+    });
+
+    test('using an object for a mock', async () => {
+      const dispatch = testContext.dispatch;
+      const spy = jest.fn();
+      const get = makeActionCreator('item', 'get', '/get').mock({ a: 1, b: 2 });
+
+      await get()(dispatch);
+      const args = dispatch.mock.calls[1];
+      expect(args[0]).toEqual({
+        type: 'item.success',
+        payload: { a: 1, b: 2 },
+        meta: {
+          entityType: 'item',
+          method: 'get'
+        }
+      });
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 });
