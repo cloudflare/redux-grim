@@ -244,6 +244,10 @@ function getNamedParameters(method, templateUrl) {
  * Return a function that evaluates the url, using a params object to populate
  * the variable parts of the url.
  *
+ * NOTE: Babel can't compile things that are inside of eval() or new Function(),
+ * makeActionCreator() was using back-ticks (string templates) inside of new Function()
+ * which busts IE11. So please use good old '+ foo +' in cases like this!
+ *
  * E.g. const evaluate = makeUrlEvaluator('/zone/(zoneId)/pool/[id]');
  *      evaluate({ zoneId: 123, body: { id: 456 }})
  *      -> '/zone/123/create/456';
@@ -254,12 +258,12 @@ function getNamedParameters(method, templateUrl) {
 function makeUrlEvaluator(templateUrl) {
   var url = templateUrl
   // E.g. /(foo) -> /${params.foo}
-  .replace(parensReg, '$${params.$1}')
+  .replace(parensReg, "'+params.$1+'")
   // Adding empty [] to a delete url creates an action which takes a body param
   .replace('[]', '')
   // E.g. /[foo] -> /${params.body.foo}
-  .replace(squareParensReg, '$${params.body.$1}');
-  return new Function('params', 'return `' + url + '`;');
+  .replace(squareParensReg, "'+params.body.$1+'");
+  return new Function('params', "return '" + url + "';");
 }
 
 /**
