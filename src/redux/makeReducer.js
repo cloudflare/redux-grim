@@ -1,5 +1,6 @@
 import { static as Immutable } from 'seamless-immutable';
 import addHooks from './addHooks';
+import { getStartType, getSuccessType, getErrorType } from '../util';
 
 export const defaultState = Immutable.from({
   data: undefined,
@@ -19,6 +20,10 @@ export default function makeReducer(entityType, options) {
     default: (state, _action, _options) => state
   };
 
+  const startType = getStartType(entityType);
+  const successType = getSuccessType(entityType);
+  const errorType = getErrorType(entityType);
+
   let errorKey = (options && options.errorKey) || defaultErrorKey;
 
   let initialState =
@@ -32,7 +37,7 @@ export default function makeReducer(entityType, options) {
   const reducer = (state = initialState, action) => {
     let nextState;
     switch (action.type) {
-      case `${entityType}.start`:
+      case startType:
         nextState = {
           ...state,
           isRequesting: true,
@@ -44,7 +49,7 @@ export default function makeReducer(entityType, options) {
         nextState = hooks.all(nextState, state, action, options);
         return Immutable.from(nextState);
 
-      case `${entityType}.success`:
+      case successType:
         nextState = {
           ...state,
           data: action.payload,
@@ -56,7 +61,7 @@ export default function makeReducer(entityType, options) {
         nextState = hooks.all(nextState, state, action, options);
         return Immutable.from(nextState);
 
-      case `${entityType}.error`:
+      case errorType:
         nextState = {
           ...state,
           isRequesting: false,

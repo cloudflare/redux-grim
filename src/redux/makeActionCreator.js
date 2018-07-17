@@ -1,4 +1,5 @@
 import addHooks from './addHooks';
+import { getStartType, getSuccessType, getErrorType } from '../util';
 
 const bodyMethods = ['put', 'patch', 'post'];
 
@@ -177,7 +178,7 @@ export default function makeActionCreator(
 
     const { url, params, restArgs } = getApiData(...args);
     let startAction = {
-      type: `${entityType}.start`,
+      type: getStartType(entityType),
       meta: {
         entityType,
         method
@@ -199,7 +200,7 @@ export default function makeActionCreator(
         (await functions.apiFetch(method, url, params.body, ...restArgs));
 
       let successAction = {
-        type: `${entityType}.success`,
+        type: getSuccessType(entityType),
         payload: response && response.body,
         meta: {
           entityType,
@@ -228,7 +229,7 @@ export default function makeActionCreator(
       return result;
     } catch (error) {
       let errorAction = {
-        type: `${entityType}.error`,
+        type: getErrorType(entityType),
         payload: error,
         error: true,
         meta: {
