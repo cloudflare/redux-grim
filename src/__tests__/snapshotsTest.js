@@ -195,15 +195,15 @@ describe('GRiM Snapshots', () => {
     expect(store.getState()).toMatchSnapshot();
   });
 
-  test('state after error', () => {
+  test('state after error', async () => {
     try {
-      store.dispatch(
+      await store.dispatch(
         itemAction('errorItemParam', itemBody, 'itemParam1', 'itemParam2')
       );
     } catch (e) {}
 
     try {
-      store.dispatch(
+      await store.dispatch(
         normalizedAction(
           'errorNormalizedParam',
           normalizedBody,
@@ -214,7 +214,7 @@ describe('GRiM Snapshots', () => {
     } catch (e) {}
 
     try {
-      store.dispatch(
+      await store.dispatch(
         normalizedToTargetAction(
           'errorNormalizedToTargetParam',
           normalizedToTargetBody,
@@ -225,7 +225,7 @@ describe('GRiM Snapshots', () => {
     } catch (e) {}
 
     try {
-      store.dispatch(
+      await store.dispatch(
         normalizedIdAction(
           'errorNormalizedIdParam',
           normalizedIdBody,
@@ -236,7 +236,7 @@ describe('GRiM Snapshots', () => {
     } catch (e) {}
 
     try {
-      store.dispatch(
+      await store.dispatch(
         normalizedNestedPropsAction(
           'errorNormalizedNestedPropsParam',
           normalizedNestedPropsBody,
