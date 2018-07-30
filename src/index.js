@@ -9,4 +9,9 @@ import processRules from './normalization/processRules';
 
 export { makeActionCreator, makeReducer, setAction, resetAction };
 
-export { createSelector, normalizationReducer, getNormalizerMiddleware, processRules };
+export {
+  createSelector,
+  normalizationReducer,
+  getNormalizerMiddleware,
+  processRules
+};

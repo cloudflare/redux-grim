@@ -1,6 +1,6 @@
 import getNormalizerMiddleware from '../getNormalizerMiddleware';
 import { targetProp, propertiesProp } from '../constants';
-import { getSuccessType, getStartType } from '../../util';
+import { getSuccessType, getStartType, getSetType } from '../../util';
 
 const singleKey = 'item';
 const arrayKey = 'items';
@@ -45,9 +45,23 @@ describe('normalizer middleware', () => {
       expect(newAction.meta.entities).toBeUndefined();
     });
 
-    test('should add entities for a normalized single result', () => {
+    test('should add entities for a normalized single result success', () => {
       const action = {
         type: getSuccessType(normalizedEntityType),
+        payload: singleResult,
+        meta: { entityType: normalizedEntityType }
+      };
+
+      const newAction = normalizeAction(action);
+      expect(newAction.meta.entities).toEqual({
+        item: { [id]: singleResult }
+      });
+      expect(newAction.payload).toBe(id);
+    });
+
+    test('should add entities for a normalized single result set', () => {
+      const action = {
+        type: getSetType(normalizedEntityType),
         payload: singleResult,
         meta: { entityType: normalizedEntityType }
       };

@@ -11,7 +11,7 @@
     "registry": "http://registry.npmjs.org/",
     "access": "public"
   },
-  "main": "dist/redux-grim",
+  "main": "src/index",
   "module": "dist/redux-grim.es",
   "js:next": "dist/redux-grim.es",
   "scripts": {
@@ -40,6 +40,8 @@
     "jest": "^23.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.11.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.56.4",
     "rollup-plugin-babel": "^3.0.3",
@@ -50,7 +52,7 @@
     "rollup-watch": "^4.3.1"
   },
   "pre-commit": [
-    "test"
+    "jest"
   ],
   "repository": {
     "type": "git",

@@ -1,6 +1,8 @@
+import { getSetType } from '../util';
+
 export function setAction(entityType, payload, path) {
   return {
-    type: `${entityType}.set`,
+    type: getSetType(entityType),
     payload,
     meta: {
       entityType,

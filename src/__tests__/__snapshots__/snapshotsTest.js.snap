@@ -1,0 +1,1987 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GRiM Snapshots initial state 1`] = `
+Object {
+  "entities": Object {},
+  "item": Object {
+    "data": undefined,
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+  "normalized": Object {
+    "data": undefined,
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+  "normalizedId": Object {
+    "data": undefined,
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+  "normalizedNestedProps": Object {
+    "data": undefined,
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+  "normalizedToTarget": Object {
+    "data": undefined,
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+}
+`;
+
+exports[`GRiM Snapshots state after error 1`] = `
+Array [
+  Object {
+    "meta": Object {
+      "entityType": "item",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "errorItemParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "errorItemParam",
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "type": "item.start",
+  },
+  Object {
+    "error": true,
+    "meta": Object {
+      "entityType": "item",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "errorItemParam",
+      },
+      "response": Object {
+        "id": "x",
+        "value": "item",
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "errorItemParam",
+      },
+      "response": Object {
+        "id": "x",
+        "value": "item",
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "payload": Object {
+      "id": "x",
+      "value": "item",
+    },
+    "type": "item.error",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "normalized",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "errorNormalizedParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "errorNormalizedParam",
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "type": "normalized.start",
+  },
+  Object {
+    "error": true,
+    "meta": Object {
+      "entityType": "normalized",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "errorNormalizedParam",
+      },
+      "response": Object {
+        "id": "a",
+        "value": "normalized",
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "errorNormalizedParam",
+      },
+      "response": Object {
+        "id": "a",
+        "value": "normalized",
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "payload": Object {
+      "id": "a",
+      "value": "normalized",
+    },
+    "type": "normalized.error",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "normalizedToTarget",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "errorNormalizedToTargetParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "errorNormalizedToTargetParam",
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "type": "normalizedToTarget.start",
+  },
+  Object {
+    "error": true,
+    "meta": Object {
+      "entityType": "normalizedToTarget",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "errorNormalizedToTargetParam",
+      },
+      "response": Object {
+        "id": "b",
+        "value": "normalizedToTarget",
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "errorNormalizedToTargetParam",
+      },
+      "response": Object {
+        "id": "b",
+        "value": "normalizedToTarget",
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "payload": Object {
+      "id": "b",
+      "value": "normalizedToTarget",
+    },
+    "type": "normalizedToTarget.error",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "normalizedId",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "errorNormalizedIdParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "errorNormalizedIdParam",
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "type": "normalizedId.start",
+  },
+  Object {
+    "error": true,
+    "meta": Object {
+      "entityType": "normalizedId",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "errorNormalizedIdParam",
+      },
+      "response": Object {
+        "otherId": "c",
+        "value": "normalizedId",
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "errorNormalizedIdParam",
+      },
+      "response": Object {
+        "otherId": "c",
+        "value": "normalizedId",
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "payload": Object {
+      "otherId": "c",
+      "value": "normalizedId",
+    },
+    "type": "normalizedId.error",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "normalizedNestedProps",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "errorNormalizedNestedPropsParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "errorNormalizedNestedPropsParam",
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "type": "normalizedNestedProps.start",
+  },
+  Object {
+    "error": true,
+    "meta": Object {
+      "entityType": "normalizedNestedProps",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "errorNormalizedNestedPropsParam",
+      },
+      "response": Object {
+        "id": "d",
+        "normalized": Object {
+          "id": "e",
+          "value": "normalizedNested",
+        },
+        "value": "normalizedNestedProps",
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "errorNormalizedNestedPropsParam",
+      },
+      "response": Object {
+        "id": "d",
+        "normalized": Object {
+          "id": "e",
+          "value": "normalizedNested",
+        },
+        "value": "normalizedNestedProps",
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "payload": Object {
+      "id": "d",
+      "normalized": Object {
+        "id": "e",
+        "value": "normalizedNested",
+      },
+      "value": "normalizedNestedProps",
+    },
+    "type": "normalizedNestedProps.error",
+  },
+]
+`;
+
+exports[`GRiM Snapshots state after error 2`] = `
+Object {
+  "entities": Object {},
+  "item": Object {
+    "data": undefined,
+    "error": Object {
+      "id": "x",
+      "value": "item",
+    },
+    "isErrored": true,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "errorItemParam",
+      },
+      "response": Object {
+        "id": "x",
+        "value": "item",
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "errorItemParam",
+      },
+      "response": Object {
+        "id": "x",
+        "value": "item",
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "errorItemParam",
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+  "normalized": Object {
+    "data": undefined,
+    "error": Object {
+      "id": "a",
+      "value": "normalized",
+    },
+    "isErrored": true,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "errorNormalizedParam",
+      },
+      "response": Object {
+        "id": "a",
+        "value": "normalized",
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "errorNormalizedParam",
+      },
+      "response": Object {
+        "id": "a",
+        "value": "normalized",
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "errorNormalizedParam",
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+  "normalizedId": Object {
+    "data": undefined,
+    "error": Object {
+      "otherId": "c",
+      "value": "normalizedId",
+    },
+    "isErrored": true,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "errorNormalizedIdParam",
+      },
+      "response": Object {
+        "otherId": "c",
+        "value": "normalizedId",
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "errorNormalizedIdParam",
+      },
+      "response": Object {
+        "otherId": "c",
+        "value": "normalizedId",
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "errorNormalizedIdParam",
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+  "normalizedNestedProps": Object {
+    "data": undefined,
+    "error": Object {
+      "id": "d",
+      "normalized": Object {
+        "id": "e",
+        "value": "normalizedNested",
+      },
+      "value": "normalizedNestedProps",
+    },
+    "isErrored": true,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "errorNormalizedNestedPropsParam",
+      },
+      "response": Object {
+        "id": "d",
+        "normalized": Object {
+          "id": "e",
+          "value": "normalizedNested",
+        },
+        "value": "normalizedNestedProps",
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "errorNormalizedNestedPropsParam",
+      },
+      "response": Object {
+        "id": "d",
+        "normalized": Object {
+          "id": "e",
+          "value": "normalizedNested",
+        },
+        "value": "normalizedNestedProps",
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "errorNormalizedNestedPropsParam",
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+  "normalizedToTarget": Object {
+    "data": undefined,
+    "error": Object {
+      "id": "b",
+      "value": "normalizedToTarget",
+    },
+    "isErrored": true,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "errorNormalizedToTargetParam",
+      },
+      "response": Object {
+        "id": "b",
+        "value": "normalizedToTarget",
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "onError": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "errorNormalizedToTargetParam",
+      },
+      "response": Object {
+        "id": "b",
+        "value": "normalizedToTarget",
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "errorNormalizedToTargetParam",
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+}
+`;
+
+exports[`GRiM Snapshots state after set 1`] = `
+Array [
+  Object {
+    "meta": Object {
+      "entityType": "item",
+      "path": undefined,
+    },
+    "payload": Object {
+      "id": "x",
+      "value": "item",
+    },
+    "type": "item.set",
+  },
+  Object {
+    "meta": Object {
+      "entities": Object {
+        "normalized": Object {
+          "a": Object {
+            "id": "a",
+            "value": "normalized",
+          },
+        },
+      },
+      "entityType": "normalized",
+      "path": undefined,
+    },
+    "payload": "a",
+    "type": "normalized.set",
+  },
+  Object {
+    "meta": Object {
+      "entities": Object {
+        "normalized": Object {
+          "b": Object {
+            "id": "b",
+            "value": "normalizedToTarget",
+          },
+        },
+      },
+      "entityType": "normalizedToTarget",
+      "path": undefined,
+    },
+    "payload": "b",
+    "type": "normalizedToTarget.set",
+  },
+  Object {
+    "meta": Object {
+      "entities": Object {
+        "normalizedId": Object {
+          "c": Object {
+            "otherId": "c",
+            "value": "normalizedId",
+          },
+        },
+      },
+      "entityType": "normalizedId",
+      "path": undefined,
+    },
+    "payload": "c",
+    "type": "normalizedId.set",
+  },
+  Object {
+    "meta": Object {
+      "entities": Object {
+        "normalized": Object {
+          "e": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+        },
+        "normalizedNestedProps": Object {
+          "d": Object {
+            "id": "d",
+            "normalized": "e",
+            "value": "normalizedNestedProps",
+          },
+        },
+      },
+      "entityType": "normalizedNestedProps",
+      "path": undefined,
+    },
+    "payload": "d",
+    "type": "normalizedNestedProps.set",
+  },
+]
+`;
+
+exports[`GRiM Snapshots state after set 2`] = `
+Object {
+  "entities": Object {
+    "normalized": Object {
+      "a": Object {
+        "id": "a",
+        "value": "normalized",
+      },
+      "b": Object {
+        "id": "b",
+        "value": "normalizedToTarget",
+      },
+      "e": Object {
+        "id": "e",
+        "value": "normalizedNested",
+      },
+    },
+    "normalizedId": Object {
+      "c": Object {
+        "otherId": "c",
+        "value": "normalizedId",
+      },
+    },
+    "normalizedNestedProps": Object {
+      "d": Object {
+        "id": "d",
+        "normalized": "e",
+        "value": "normalizedNestedProps",
+      },
+    },
+  },
+  "item": Object {
+    "data": Object {
+      "id": "x",
+      "value": "item",
+    },
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+  "normalized": Object {
+    "data": "a",
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+  "normalizedId": Object {
+    "data": "c",
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+  "normalizedNestedProps": Object {
+    "data": "d",
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+  "normalizedToTarget": Object {
+    "data": "b",
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+  },
+}
+`;
+
+exports[`GRiM Snapshots state after success 1`] = `
+Array [
+  Object {
+    "meta": Object {
+      "entityType": "item",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "itemParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "itemParam",
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "type": "item.start",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "item",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "itemParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "itemParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "payload": Object {
+      "id": "x",
+      "value": "item",
+    },
+    "type": "item.success",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "normalized",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "normalizedParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "normalizedParam",
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "type": "normalized.start",
+  },
+  Object {
+    "meta": Object {
+      "entities": Object {
+        "normalized": Object {
+          "a": Object {
+            "id": "a",
+            "value": "normalized",
+          },
+        },
+      },
+      "entityType": "normalized",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "normalizedParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "normalizedParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "payload": "a",
+    "type": "normalized.success",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "normalizedToTarget",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "normalizedToTargetParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "normalizedToTargetParam",
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "type": "normalizedToTarget.start",
+  },
+  Object {
+    "meta": Object {
+      "entities": Object {
+        "normalized": Object {
+          "b": Object {
+            "id": "b",
+            "value": "normalizedToTarget",
+          },
+        },
+      },
+      "entityType": "normalizedToTarget",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "normalizedToTargetParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "normalizedToTargetParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "payload": "b",
+    "type": "normalizedToTarget.success",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "normalizedId",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "normalizedIdParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "normalizedIdParam",
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "type": "normalizedId.start",
+  },
+  Object {
+    "meta": Object {
+      "entities": Object {
+        "normalizedId": Object {
+          "c": Object {
+            "otherId": "c",
+            "value": "normalizedId",
+          },
+        },
+      },
+      "entityType": "normalizedId",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "normalizedIdParam",
+      },
+      "response": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "normalizedIdParam",
+      },
+      "response": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "payload": "c",
+    "type": "normalizedId.success",
+  },
+  Object {
+    "meta": Object {
+      "entityType": "normalizedNestedProps",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "normalizedNestedPropsParam",
+      },
+      "response": undefined,
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "normalizedNestedPropsParam",
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "type": "normalizedNestedProps.start",
+  },
+  Object {
+    "meta": Object {
+      "entities": Object {
+        "normalized": Object {
+          "e": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+        },
+        "normalizedNestedProps": Object {
+          "d": Object {
+            "id": "d",
+            "normalized": "e",
+            "value": "normalizedNestedProps",
+          },
+        },
+      },
+      "entityType": "normalizedNestedProps",
+      "method": "post",
+    },
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "normalizedNestedPropsParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "normalizedNestedPropsParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "payload": "d",
+    "type": "normalizedNestedProps.success",
+  },
+]
+`;
+
+exports[`GRiM Snapshots state after success 2`] = `
+Object {
+  "entities": Object {
+    "normalized": Object {
+      "a": Object {
+        "id": "a",
+        "value": "normalized",
+      },
+      "b": Object {
+        "id": "b",
+        "value": "normalizedToTarget",
+      },
+      "e": Object {
+        "id": "e",
+        "value": "normalizedNested",
+      },
+    },
+    "normalizedId": Object {
+      "c": Object {
+        "otherId": "c",
+        "value": "normalizedId",
+      },
+    },
+    "normalizedNestedProps": Object {
+      "d": Object {
+        "id": "d",
+        "normalized": "e",
+        "value": "normalizedNestedProps",
+      },
+    },
+  },
+  "item": Object {
+    "data": Object {
+      "id": "x",
+      "value": "item",
+    },
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "itemParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "itemParam",
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+        "param": "itemParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "x",
+          "value": "item",
+        },
+      },
+      "rest": Array [
+        "itemParam1",
+        "itemParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+  "normalized": Object {
+    "data": "a",
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "normalizedParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "normalizedParam",
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+        "param": "normalizedParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "a",
+          "value": "normalized",
+        },
+      },
+      "rest": Array [
+        "normalizedParam1",
+        "normalizedParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+  "normalizedId": Object {
+    "data": "c",
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "normalizedIdParam",
+      },
+      "response": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "normalizedIdParam",
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+        "param": "normalizedIdParam",
+      },
+      "response": Object {
+        "body": Object {
+          "otherId": "c",
+          "value": "normalizedId",
+        },
+      },
+      "rest": Array [
+        "normalizedIdParam1",
+        "normalizedIdParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+  "normalizedNestedProps": Object {
+    "data": "d",
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "normalizedNestedPropsParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "normalizedNestedPropsParam",
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+        "param": "normalizedNestedPropsParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "d",
+          "normalized": Object {
+            "id": "e",
+            "value": "normalizedNested",
+          },
+          "value": "normalizedNestedProps",
+        },
+      },
+      "rest": Array [
+        "normalizedNestedPropsParam1",
+        "normalizedNestedPropsParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+  "normalizedToTarget": Object {
+    "data": "b",
+    "error": null,
+    "isErrored": false,
+    "isRequesting": false,
+    "onAll": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "normalizedToTargetParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "onStart": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "normalizedToTargetParam",
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "onSuccess": Object {
+      "options": Object {
+        "option": "actionOptions",
+      },
+      "params": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+        "param": "normalizedToTargetParam",
+      },
+      "response": Object {
+        "body": Object {
+          "id": "b",
+          "value": "normalizedToTarget",
+        },
+      },
+      "rest": Array [
+        "normalizedToTargetParam1",
+        "normalizedToTargetParam2",
+      ],
+    },
+    "options": Object {
+      "options": "reducerOptions",
+    },
+  },
+}
+`;
