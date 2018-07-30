@@ -1,6 +1,6 @@
 {
   "name": "redux-grim",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Generator for asynchronous Redux endpoint actions and reducers",
   "keywords": [
     "Redux",
