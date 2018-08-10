@@ -74,8 +74,8 @@ const makeTestAction = key =>
       return body;
     });
 
-const makeTestReducer = key =>
-  makeReducer(key, { options: 'reducerOptions' })
+const makeTestReducer = (key, opt) =>
+  makeReducer(key, { options: 'reducerOptions', ...opt })
     .on('start', (nextState, _prevState, action, options) => {
       return {
         ...nextState,
@@ -106,7 +106,7 @@ const makeTestReducer = key =>
     });
 
 const itemAction = makeTestAction(itemKey);
-const itemReducer = makeTestReducer(itemKey);
+const itemReducer = makeTestReducer(itemKey, { errorKey: 'otherErrorKey' });
 
 const normalizedAction = makeTestAction(normalizedKey);
 const normalizedReducer = makeTestReducer(normalizedKey);

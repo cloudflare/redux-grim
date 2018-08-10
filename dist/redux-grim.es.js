@@ -1292,7 +1292,7 @@ function makeReducer(entityType, options) {
 
   var errorKey = options && options.errorKey || defaultErrorKey;
 
-  var initialState = errorKey === defaultErrorKey ? defaultState : initialState = seamlessImmutable_development_1.from(_extends({}, seamlessImmutable_development_1.without(defaultState, 'error'), defineProperty({}, errorKey, null)));
+  var initialState = errorKey === defaultErrorKey ? defaultState : seamlessImmutable_development_1.from(_extends({}, seamlessImmutable_development_1.without(defaultState, 'error'), defineProperty({}, errorKey, null)));
 
   var reducer = function reducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;

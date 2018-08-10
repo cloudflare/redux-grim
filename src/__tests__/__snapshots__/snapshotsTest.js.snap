@@ -5,9 +5,9 @@ Object {
   "entities": Object {},
   "item": Object {
     "data": undefined,
-    "error": null,
     "isErrored": false,
     "isRequesting": false,
+    "otherErrorKey": null,
   },
   "normalized": Object {
     "data": undefined,
@@ -534,10 +534,6 @@ Object {
   "entities": Object {},
   "item": Object {
     "data": undefined,
-    "error": Object {
-      "id": "x",
-      "value": "item",
-    },
     "isErrored": true,
     "isRequesting": false,
     "onAll": Object {
@@ -597,7 +593,12 @@ Object {
       ],
     },
     "options": Object {
+      "errorKey": "otherErrorKey",
       "options": "reducerOptions",
+    },
+    "otherErrorKey": Object {
+      "id": "x",
+      "value": "item",
     },
   },
   "normalized": Object {
@@ -1022,9 +1023,9 @@ Object {
       "id": "x",
       "value": "item",
     },
-    "error": null,
     "isErrored": false,
     "isRequesting": false,
+    "otherErrorKey": null,
   },
   "normalized": Object {
     "data": "a",
@@ -1620,7 +1621,6 @@ Object {
       "id": "x",
       "value": "item",
     },
-    "error": null,
     "isErrored": false,
     "isRequesting": false,
     "onAll": Object {
@@ -1684,8 +1684,10 @@ Object {
       ],
     },
     "options": Object {
+      "errorKey": "otherErrorKey",
       "options": "reducerOptions",
     },
+    "otherErrorKey": null,
   },
   "normalized": Object {
     "data": "a",

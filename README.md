@@ -648,18 +648,20 @@ their name properties.
 ### getNormalizerMiddleware(rules, callback)
  
 getNormalizerMiddleware creates a Redux middleware function which takes action
-result properties and, if they are normalized, replaces them with their ids (or
+payload values and, if they are normalized, replaces them with their ids (or
 arrays of ids). The normalized data is added to the action under an `entities`
 property
 
 The callback function is executed when entities are normalized. It's passed the
 entityType and the original denormalized value. This is used for legacy
 integration with older code at Cloudflare. It shouldn't be used otherwise. 
+
+Note: Only the payloads of `success` and `set` actions are normalized.
  
 ### normalizationReducer(state, action)
 
-The normalizationReducer adds the normalized data created by the middleware to
-the state tree. It also removes deleted data. 
+The normalizationReducer records the normalized data created by the middleware,
+and also removes deleted data. 
  
 ### createSelector(rules, entitiesSelector, entityType, selector)
  

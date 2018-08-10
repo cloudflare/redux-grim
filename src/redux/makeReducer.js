@@ -29,10 +29,10 @@ export default function makeReducer(entityType, options) {
   let initialState =
     errorKey === defaultErrorKey
       ? defaultState
-      : (initialState = Immutable.from({
+      : Immutable.from({
           ...Immutable.without(defaultState, 'error'),
           [errorKey]: null
-        }));
+        });
 
   const reducer = (state = initialState, action) => {
     let nextState;
