@@ -1,6 +1,12 @@
-import makeReducer, { defaultState } from '../makeReducer';
+import makeReducer from '../makeReducer';
 
 const reducer = makeReducer('items');
+const defaultState = {
+  data: undefined,
+  error: null,
+  isRequesting: false,
+  isErrored: false
+};
 
 describe('makeReducer', () => {
   test('should return an initial state', () => {
@@ -191,7 +197,7 @@ describe('makeReducer', () => {
             isErrored: false,
             error: null
           });
-          expect(prevState).toBe(defaultState);
+          expect(prevState).toEqual(defaultState);
           expect(hookAction).toBe(action);
           expect(hookOptions).toBe(options);
         }
@@ -216,7 +222,7 @@ describe('makeReducer', () => {
             isErrored: false,
             error: null
           });
-          expect(prevState).toBe(defaultState);
+          expect(prevState).toEqual(defaultState);
           expect(hookAction).toBe(action);
           expect(hookOptions).toBe(options);
         }
@@ -241,7 +247,7 @@ describe('makeReducer', () => {
             isErrored: true,
             error: 1
           });
-          expect(prevState).toBe(defaultState);
+          expect(prevState).toEqual(defaultState);
           expect(hookAction).toBe(action);
           expect(hookOptions).toBe(options);
         }
@@ -313,72 +319,75 @@ describe('makeReducer', () => {
     });
   });
 
-  describe('errorKey', () => {
-    test('should create an initial state with an overriden error key', () => {
-      const reducer = makeReducer('items', { errorKey: 'myError' });
+  describe('keys', () => {
+    const reducer = makeReducer('items', {
+      errorKey: 'myError',
+      dataKey: 'myData',
+      isRequestingKey: 'myIsRequesting',
+      isErroredKey: 'myIsErrored'
+    });
+
+    test('should create an initial state with an overriden keys', () => {
       const state = reducer(undefined, {});
       expect(state).toEqual({
-        data: undefined,
+        myData: undefined,
         myError: null,
-        isRequesting: false,
-        isErrored: false
+        myIsRequesting: false,
+        myIsErrored: false
       });
     });
 
-    test('should should update the overridden error key on a start action', () => {
-      const reducer = makeReducer('items', { errorKey: 'myError' });
+    test('should should update overridden keys on a start action', () => {
       const state = reducer(
         {
-          data: undefined,
+          myData: undefined,
           myError: 'error',
-          isRequesting: false,
-          isErrored: false
+          myIsRequesting: false,
+          myIsErrored: false
         },
         { type: 'items.start' }
       );
       expect(state).toEqual({
-        data: undefined,
+        myData: undefined,
         myError: null,
-        isRequesting: true,
-        isErrored: false
+        myIsRequesting: true,
+        myIsErrored: false
       });
     });
 
-    test('should should update the overridden error key on a error action', () => {
-      const reducer = makeReducer('items', { errorKey: 'myError' });
+    test('should should update overridden keys on a error action', () => {
       const state = reducer(
         {
-          data: undefined,
+          myData: undefined,
           myError: null,
-          isRequesting: false,
-          isErrored: false
+          myIsRequesting: false,
+          myIsErrored: false
         },
         { type: 'items.error', payload: 'error' }
       );
       expect(state).toEqual({
-        data: undefined,
+        myData: undefined,
         myError: 'error',
-        isRequesting: false,
-        isErrored: true
+        myIsRequesting: false,
+        myIsErrored: true
       });
     });
 
-    test('should not update the overridden error key on a success action', () => {
-      const reducer = makeReducer('items', { errorKey: 'myError' });
+    test('should update overridden keys on a success action', () => {
       const state = reducer(
         {
-          data: undefined,
+          myData: undefined,
           myError: 'success',
-          isRequesting: false,
-          isErrored: false
+          myIsRequesting: false,
+          myIsErrored: false
         },
         { type: 'items.success', payload: 1 }
       );
       expect(state).toEqual({
-        data: 1,
+        myData: 1,
         myError: 'success',
-        isRequesting: false,
-        isErrored: false
+        myIsRequesting: false,
+        myIsErrored: false
       });
     });
   });

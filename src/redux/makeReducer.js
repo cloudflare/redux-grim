@@ -2,16 +2,7 @@ import { static as Immutable } from 'seamless-immutable';
 import addHooks from './addHooks';
 import { getStartType, getSuccessType, getErrorType } from '../util';
 
-export const defaultState = Immutable.from({
-  data: undefined,
-  error: null,
-  isRequesting: false,
-  isErrored: false
-});
-
-const defaultErrorKey = 'error';
-
-export default function makeReducer(entityType, options) {
+export default function makeReducer(entityType, options = {}) {
   const hooks = {
     start: (nextState, _prevState, _action, _options) => nextState,
     success: (nextState, _state, _action, _options) => nextState,
@@ -24,15 +15,17 @@ export default function makeReducer(entityType, options) {
   const successType = getSuccessType(entityType);
   const errorType = getErrorType(entityType);
 
-  let errorKey = (options && options.errorKey) || defaultErrorKey;
+  const dataKey = options.dataKey || 'data';
+  const errorKey = options.errorKey || 'error';
+  const isRequestingKey = options.isRequestingKey || 'isRequesting';
+  const isErroredKey = options.isErroredKey || 'isErrored';
 
-  let initialState =
-    errorKey === defaultErrorKey
-      ? defaultState
-      : Immutable.from({
-          ...Immutable.without(defaultState, 'error'),
-          [errorKey]: null
-        });
+  let initialState = Immutable.from({
+    [dataKey]: undefined,
+    [errorKey]: null,
+    [isRequestingKey]: false,
+    [isErroredKey]: false
+  });
 
   const reducer = (state = initialState, action) => {
     let nextState;
@@ -40,8 +33,8 @@ export default function makeReducer(entityType, options) {
       case startType:
         nextState = {
           ...state,
-          isRequesting: true,
-          isErrored: false,
+          [isRequestingKey]: true,
+          [isErroredKey]: false,
           [errorKey]: null
         };
 
@@ -52,9 +45,9 @@ export default function makeReducer(entityType, options) {
       case successType:
         nextState = {
           ...state,
-          data: action.payload,
-          isRequesting: false,
-          isErrored: false
+          [dataKey]: action.payload,
+          [isRequestingKey]: false,
+          [isErroredKey]: false
         };
 
         nextState = hooks.success(nextState, state, action, options);
@@ -64,8 +57,8 @@ export default function makeReducer(entityType, options) {
       case errorType:
         nextState = {
           ...state,
-          isRequesting: false,
-          isErrored: true,
+          [isRequestingKey]: false,
+          [isErroredKey]: true,
           [errorKey]: action.payload
         };
 

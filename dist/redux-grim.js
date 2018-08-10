@@ -1264,16 +1264,11 @@ function immutableInit(config) {
 var seamlessImmutable_development_1 = seamlessImmutable_development.static;
 var seamlessImmutable_development_2 = seamlessImmutable_development.Immutable;
 
-var defaultState = seamlessImmutable_development_1.from({
-  data: undefined,
-  error: null,
-  isRequesting: false,
-  isErrored: false
-});
+function makeReducer(entityType) {
+  var _Immutable$from;
 
-var defaultErrorKey = 'error';
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-function makeReducer(entityType, options) {
   var hooks = {
     start: function start(nextState, _prevState, _action, _options) {
       return nextState;
@@ -1296,42 +1291,37 @@ function makeReducer(entityType, options) {
   var successType = getSuccessType(entityType);
   var errorType = getErrorType(entityType);
 
-  var errorKey = options && options.errorKey || defaultErrorKey;
+  var dataKey = options.dataKey || 'data';
+  var errorKey = options.errorKey || 'error';
+  var isRequestingKey = options.isRequestingKey || 'isRequesting';
+  var isErroredKey = options.isErroredKey || 'isErrored';
 
-  var initialState = errorKey === defaultErrorKey ? defaultState : seamlessImmutable_development_1.from(_extends({}, seamlessImmutable_development_1.without(defaultState, 'error'), defineProperty({}, errorKey, null)));
+  var initialState = seamlessImmutable_development_1.from((_Immutable$from = {}, defineProperty(_Immutable$from, dataKey, undefined), defineProperty(_Immutable$from, errorKey, null), defineProperty(_Immutable$from, isRequestingKey, false), defineProperty(_Immutable$from, isErroredKey, false), _Immutable$from));
 
   var reducer = function reducer() {
+    var _babelHelpers$extends, _babelHelpers$extends2, _babelHelpers$extends3;
+
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
 
     var nextState = void 0;
     switch (action.type) {
       case startType:
-        nextState = _extends({}, state, defineProperty({
-          isRequesting: true,
-          isErrored: false
-        }, errorKey, null));
+        nextState = _extends({}, state, (_babelHelpers$extends = {}, defineProperty(_babelHelpers$extends, isRequestingKey, true), defineProperty(_babelHelpers$extends, isErroredKey, false), defineProperty(_babelHelpers$extends, errorKey, null), _babelHelpers$extends));
 
         nextState = hooks.start(nextState, state, action, options);
         nextState = hooks.all(nextState, state, action, options);
         return seamlessImmutable_development_1.from(nextState);
 
       case successType:
-        nextState = _extends({}, state, {
-          data: action.payload,
-          isRequesting: false,
-          isErrored: false
-        });
+        nextState = _extends({}, state, (_babelHelpers$extends2 = {}, defineProperty(_babelHelpers$extends2, dataKey, action.payload), defineProperty(_babelHelpers$extends2, isRequestingKey, false), defineProperty(_babelHelpers$extends2, isErroredKey, false), _babelHelpers$extends2));
 
         nextState = hooks.success(nextState, state, action, options);
         nextState = hooks.all(nextState, state, action, options);
         return seamlessImmutable_development_1.from(nextState);
 
       case errorType:
-        nextState = _extends({}, state, defineProperty({
-          isRequesting: false,
-          isErrored: true
-        }, errorKey, action.payload));
+        nextState = _extends({}, state, (_babelHelpers$extends3 = {}, defineProperty(_babelHelpers$extends3, isRequestingKey, false), defineProperty(_babelHelpers$extends3, isErroredKey, true), defineProperty(_babelHelpers$extends3, errorKey, action.payload), _babelHelpers$extends3));
 
         nextState = hooks.error(nextState, state, action, options);
         nextState = hooks.all(nextState, state, action, options);
