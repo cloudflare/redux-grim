@@ -36,6 +36,18 @@ describe('reducer', () => {
     });
   });
 
+  test('should ignore delete when entity type does not exist', () => {
+    const newState = reducer(initialState, {
+      meta: {
+        entityType: 'banana',
+        id: '1',
+        method: 'delete'
+      }
+    });
+
+    expect(newState).toEqual(initialState);
+  });
+
   test('should merge entities starting with an empty state', () => {
     const entities = {
       bananas: {

@@ -1672,21 +1672,25 @@ function normalizationReducer() {
   var _ref = arguments[1];
   var meta = _ref.meta;
 
-  if (meta && meta.method === 'delete' && meta.id) {
-    // Only a single item can be deleted at a time.
-    return seamlessImmutable_development_1.set(state, meta.entityType, seamlessImmutable_development_1.without(state[meta.entityType], meta.id));
-  } else if (meta && meta.entities && _typeof(meta.entities) === 'object') {
-    // Using seamless-immutable's deep merge resulted in an issue where an
-    // entity was supposed to have had a set of associated objects removed
-    // by setting the property to an empty object, but the deep merge retained
-    // those objects.
-    // Instead each entity type is merged separately using a shallow merge,
-    // which effectively replaces rather than merges individual entities.
-    var nextState = state;
-    Object.keys(meta.entities).forEach(function (entityType) {
-      return nextState = seamlessImmutable_development_1.set(nextState, entityType, seamlessImmutable_development_1.merge({}, [state[entityType], meta.entities[entityType]]));
-    });
-    return nextState;
+  if (meta) {
+    if (meta.method === 'delete') {
+      if (state[meta.entityType] && meta.id) {
+        // Only a single item can be deleted at a time.
+        return seamlessImmutable_development_1.set(state, meta.entityType, seamlessImmutable_development_1.without(state[meta.entityType], meta.id));
+      }
+    } else if (meta.entities && _typeof(meta.entities) === 'object') {
+      // Using seamless-immutable's deep merge resulted in an issue where an
+      // entity was supposed to have had a set of associated objects removed
+      // by setting the property to an empty object, but the deep merge retained
+      // those objects.
+      // Instead each entity type is merged separately using a shallow merge,
+      // which effectively replaces rather than merges individual entities.
+      var nextState = state;
+      Object.keys(meta.entities).forEach(function (entityType) {
+        return nextState = seamlessImmutable_development_1.set(nextState, entityType, seamlessImmutable_development_1.merge({}, [state[entityType] || {}, meta.entities[entityType]]));
+      });
+      return nextState;
+    }
   }
   return state;
 }
