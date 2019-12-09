@@ -2,23 +2,14 @@
   "env": {
     // jest doesn't take account of BABEL_ENV, you need to set NODE_ENV - https://facebook.github.io/jest/docs/getting-started.html#using-babel
     "commonjs": {
-      "presets": [
-        ["env", { modules: false }]
-      ]
+      "presets": [["@babel/preset-env", { "modules": false }]]
     },
     "es": {
-      "presets": [
-        ["env", { modules: false }]
-      ]
+      "presets": [["@babel/preset-env", { "modules": false }]]
     },
     "test": {
-      "presets": ["es2015"],
+      "presets": ["@babel/preset-env"]
     }
   },
-  "presets": [
-    ["es2015", { "modules": false }]
-  ],
-  "plugins": [
-    "transform-object-rest-spread"
-  ]
+  "presets": [["@babel/preset-env", { "modules": false }]]
 }

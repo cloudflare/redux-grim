@@ -108,7 +108,6 @@ export function makeUrlEvaluator(templateUrl) {
   return new Function('params', "return '" + url + "';");
 }
 
-
 /**
  * Returns a function which evaluates the tempalte url, with the action
  * arguments and returns an object containing the evaluated url, an object
@@ -292,16 +291,16 @@ export function validateActionParameters(
     if (hasBody && ii === namedParams.length - 1) {
       if (type !== 'object') {
         console.warn(
-          `${entityType}, ${method}, ${url}: Expected parameter ${
-            param
-          } to be an object. Actual value: ${args[ii]} ${type}`
+          `${entityType}, ${method}, ${url}: Expected parameter ${param} to be an object. Actual value: ${
+            args[ii]
+          } ${type}`
         );
       }
     } else if (type !== 'string' && type !== 'number') {
       console.warn(
-        `${entityType}, ${method}, ${url}: Expected parameter ${
-          param
-        } to be a string or number. Actual value: ${args[ii]}`
+        `${entityType}, ${method}, ${url}: Expected parameter ${param} to be a string or number. Actual value: ${
+          args[ii]
+        }`
       );
     }
   });
