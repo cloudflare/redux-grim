@@ -12,7 +12,7 @@
     * [Further Action Configuration](#further-action-configuration)
       + [apiFetch](#apifetch)
       + [on(phase, (action, ...)) => action)](#onphase-action---action)
-  + [makeReducer](makereducer)
+  + [makeReducer](#makereducer)
     * [Further Reducer Configuration](#further-reducer-configuration)
       + [modifyInitialState(state => state)](#modifyinitialstatestate--state)
       + [on(phase, (state, ...)) => state)](#onphase-state---state)
